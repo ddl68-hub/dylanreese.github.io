@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio | DL</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        :root {
+            --background: #fffdfd;
+            --primary-red: #e67e7e;
+            --soft-pink: #fdf0f0;
+            --border-lace: #fadadd;
+            --pearl: #ffffff;
+            --text-dark: #4a4a4a;
+        }
+
+        body {
+            background-color: var(--background);
+            background-image: radial-gradient(var(--border-lace) 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .initials-logo {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .app-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        /* Navigation */
+        .app-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--border-lace);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .initials-logo {
+            color: var(--text-dark);
+            font-size: 1.6rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .bow-icon {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            display: inline-block;
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .nav-table-container {
+            border: 1px solid var(--border-lace);
+            border-radius: 50px;
+            background: var(--pearl);
+        }
+
+        .nav-table { border-collapse: collapse; }
+        .nav-table td { padding: 10px 20px; border-left: 1px solid var(--border-lace); }
+        .nav-table td:first-child { border-left: none; }
+        .nav-link { text-decoration: none; color: var(--text-dark); font-size: 0.85rem; font-weight: 600; text-transform: capitalize; }
+        .nav-link:hover { color: var(--primary-red); }
+
+        /* Section 1: Hero Profile */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .profile-pic-frame {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px double var(--primary-red);
+            box-shadow: 0 10px 20px rgba(230, 126, 126, 0.15);
+            animation: fadeInImg 1.5s ease-in;
+        }
+
+        @keyframes fadeInImg {
+            from { opacity: 0; filter: grayscale(100%); }
+            to { opacity: 1; filter: grayscale(0%); }
+        }
+
+        .name-title-box h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: var(--primary-red);
+        }
+
+        .name-title-box p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: var(--text-dark);
+        }
+
+        /* Section 2: Clickable App Card */
+        .clickable-app-card {
+            text-decoration: none;
+            display: block;
+            background: var(--pearl);
+            border: 6px double var(--border-lace);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clickable-app-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: var(--primary-red);
+            box-shadow: 0 15px 35px rgba(230, 126, 126, 0.15);
+        }
+
+        .clickable-app-card h2 { color: var(--primary-red); margin-top: 0; }
+        .clickable-app-card p { color: var(--text-dark); margin-bottom: 0; }
+
+        .hover-hint {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-red);
+            letter-spacing: 1px;
+        }
+
+        /* General Content Sections */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 45px;
+            border: 1px solid var(--border-lace);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        section h2 { 
+            color: var(--primary-red); 
+            font-size: 2rem; 
+            margin-bottom: 25px; 
+            border-bottom: 1px dashed var(--border-lace); 
+            padding-bottom: 10px; 
+        }
+
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skill-tag { 
+            background: var(--soft-pink); 
+            color: var(--primary-red); 
+            padding: 8px 18px; 
+            border-radius: 20px; 
+            font-size: 0.85rem; 
+            border: 1px solid var(--border-lace);
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover { background: var(--pearl); border-color: var(--primary-red); }
+
+        .involvement-item { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 15px; 
+            padding: 12px; 
+            background: #fff; 
+            border-radius: 10px; 
+            border-left: 3px solid var(--primary-red);
+        }
+
+        .connect-btn {
+            background: var(--primary-red);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 15px;
+            transition: background 0.3s;
+        }
+        .connect-btn:hover { background: #d66b6b; }
+
+        .footer { text-align: center; padding: 60px; font-size: 0.9rem; color: var(--primary-red); letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="header-left">
+            <a href="#" class="initials-logo">DL</a>
+            <span class="bow-icon">౨ৎ</span>
+        </div>
+        
+        <nav class="nav-table-container">
+            <table class="nav-table">
+                <tr>
+                    <td><a href="#profile" class="nav-link">My Profile</a></td>
+                    <td><a href="#experiences" class="nav-link">Experiences</a></td>
+                    <td><a href="#skills" class="nav-link">Skills</a></td>
+                    <td><a href="#involvement" class="nav-link">Involvement</a></td>
+                    <td><a href="#connect" class="nav-link">Let's Connect</a></td>
+                </tr>
+            </table>
+        </nav>
+    </header>
+
+    <div class="app-wrapper">
+
+        <section id="profile" class="hero-section animate__animated animate__fadeIn">
+            <div class="profile-pic-frame">
+                <img src="Assets/ProfilePic.jpeg" alt="Dylan Reese D. Laroza" class="profile-img">
+            </div>
+            <div class="name-title-box">
+                <h1>Dylan Reese D. Laroza</h1>
+                <p>Accounting Student at Rutgers Business School</p>
+                <p style="font-size: 1rem; color: #777;">May 2027 Candidate | GPA: 3.3</p>
+            </div>
+        </section>
+
+        <a href="https://ddl68-hub.github.io/travelapp.github.io/" target="_blank" class="clickable-app-card">
+    <h2>Coquette Travels ౨ৎ</h2>
+    <p>A dreamy postcard-matching game to test your knowledge of global destinations. Collect memories like pearls as you identify iconic landmarks and hidden gems across the globe. Grab your boarding pass and let's explore together.</p>
+    <span class="hover-hint">Click to Board Plane ✨</span>
+        </a>
+
+        <section id="experiences" class="glass-card animate__animated animate__fadeIn">
+            <h2>Experiences</h2>
+            <div style="margin-bottom: 30px;">
+                <h3 style="margin-bottom:5px;">Part Time Sales Stylist</h3>
+                <p style="margin:0; font-weight:600; color:var(--primary-red);">Kate Spade New York | Jul 2024 - Present</p>
+                <p>Orchestrated inventory procedures, attaining a 10% boost in replenishment speed. Utilized Tagalog proficiency to establish professional relationships and deliver outstanding service to a diverse clientele.</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom:5px;">Part Time Admin Staff</h3>
+                <p style="margin:0; font-weight:600; color:var(--primary-red);">Professional Driving School of the Americas | Sep 2022 - Jun 2023</p>
+                <p>Streamlined reimbursement analysis and ensured 100% accuracy for financial records utilizing Excel and QuickBooks. Managed strict data auditing and resolved complex customer queries across multiple communication channels.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="glass-card animate__animated animate__fadeIn">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Microsoft Excel</span>
+                <span class="skill-tag">QuickBooks</span>
+                <span class="skill-tag">Financial Accounting</span>
+                <span class="skill-tag">Managerial Accounting</span>
+                <span class="skill-tag">Accounting Info Systems</span>
+                <span class="skill-tag">Data Auditing</span>
+                <span class="skill-tag">Inventory Management</span>
+                <span class="skill-tag">Tagalog (Native)</span>
+                <span class="skill-tag">Solution-Focused Approach</span>
+            </div>
+        </section>
+
+        <section id="involvement" class="glass-card animate__animated animate__fadeIn">
+            <h2>Involvement</h2>
+            <div class="involvement-item">
+                <span>Road to CPA Mentoring Program 2026 (Mentor)</span>
+                <span></span>
+            </div>
+            <div class="involvement-item">
+                <span>Rutgers University Accounting Association</span>
+                <span></span>
+            </div>
+            <div class="involvement-item">
+                <span>Educational Opportunity Funding (EOF) Summer Institute</span>
+                <span></span>
+            </div>
+            <div class="involvement-item">
+                <span>Flow Initiative (Hygiene Donation Volunteer)</span>
+                <span></span>
+            </div>
+            <div class="involvement-item">
+                <span>Move-In Team Volunteer (2024 & 2025)</span>
+                <span></span>
+            </div>
+        </section>
+
+        <section id="connect" class="glass-card animate__animated animate__fadeInUp">
+            <h2>Let's Connect</h2>
+            <p>I am looking for challenging opportunities in accounting that leverage data analysis and professional client engagement.</p>
+            <div style="margin-top: 25px;">
+                <a href="mailto:dylanreese.laroza@rutgers.edu" class="connect-btn">Email Me</a>
+                <a href="https://linkedin.com/in/dylan-reese-d-laroza-070148299" target="_blank" style="color:var(--primary-red); font-weight:600; text-decoration:none;">LinkedIn ౨ৎ</a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            DYLAN REESE D. LAROZA ౨ৎ 2026
+        </footer>
+    </div>
+
+</body>
+</html>
